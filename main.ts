@@ -15,7 +15,11 @@ radio.onReceivedValue(function (name, value) {
 })
 serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
     radio.sendString(serial.readLine())
+    sent()
 })
+function sent () {
+    music.playTone(523, music.beat(BeatFraction.Sixteenth))
+}
 radio.setGroup(1)
 basic.showNumber(1)
 music.setVolume(25)
